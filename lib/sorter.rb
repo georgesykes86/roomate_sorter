@@ -5,7 +5,7 @@ require_relative './data_cleaner'
 class Sorter
 
   attr_accessor :student_choices, :rooms, :selections
-
+ # Neeed to change initialisation implementation
   def initialize(choices, rooms = [], ordered = false)
     @rooms = rooms
     @student_choices = choices
