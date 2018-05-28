@@ -50,7 +50,7 @@ class Sorter
       end
     end
   end
-
+  # Doesn't seem to be working properly need to debug
   def cancel
     student_choices.each_with_index do |choices, index|
       while student_choices[index].length > 1 do
