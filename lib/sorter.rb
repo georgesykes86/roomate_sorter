@@ -1,11 +1,12 @@
 #Algorithm for matching children into their rooms
 require_relative '../resources/student_list'
+require_relative './data_cleaner'
 
 class Sorter
 
   attr_accessor :student_choices, :rooms, :selections
 
-  def initialize(choices = Selections::STUDENT_CHOICES, rooms = [], ordered = false)
+  def initialize(choices, rooms = [], ordered = false)
     @rooms = rooms
     @student_choices = choices
     @selections = Array.new(student_choices.length)
@@ -18,13 +19,13 @@ class Sorter
           first_choice = student_choices[index].first
           if selections.include?(first_choice)
             competitor = selections.index(first_choice)
-            if student_choices[first_choice - 1].index(index+1) < student_choices[first_choice - 1].index(competitor+1)
+            if student_choices[first_choice].index(index) < student_choices[first_choice].index(competitor)
               selections[index] = first_choice
               selections[competitor] = nil
-              student_choices[first_choice - 1].delete(competitor + 1)
+              student_choices[first_choice].delete(competitor)
               student_choices[competitor].delete(first_choice)
             else
-              student_choices[first_choice - 1].delete(index + 1)
+              student_choices[first_choice].delete(index)
               student_choices[index].delete(first_choice)
             end
             break
@@ -39,11 +40,11 @@ class Sorter
 
   def reject
     student_choices.each_with_index do |choices,index|
-      accepted = selections.index(index+1)
-      accepted_index = choices.index(accepted + 1)
+      accepted = selections.index(index)
+      accepted_index = choices.index(accepted)
       rejects = choices[accepted_index+1..-1]
       rejects.each do |reject|
-        student_choices[reject - 1].delete(index + 1)
+        student_choices[reject].delete(index)
         student_choices[index].delete(reject)
         p student_choices
       end
@@ -56,15 +57,15 @@ class Sorter
         choices = student_choices[index]
         cancelling_array = []
         last_choice = nil
-        while last_choice != index + 1 do
+        while last_choice != index do
           second_choice = choices[1]
-          last_choice = student_choices[second_choice - 1].last
+          last_choice = student_choices[second_choice].last
           cancelling_array.push([second_choice, last_choice])
-          choices = student_choices[last_choice - 1]
+          choices = student_choices[last_choice]
         end
         cancelling_array.each do |array|
-          student_choices[array[0] - 1].delete(array[1])
-          student_choices[array[1] - 1].delete(array[0])
+          student_choices[array[0]].delete(array[1])
+          student_choices[array[1]].delete(array[0])
         end
       end
     end
