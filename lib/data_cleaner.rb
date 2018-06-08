@@ -4,7 +4,7 @@ class Datacleaner
   def initialize(data_array)
     @data = data_array
   end
-
+#Change the way classes are set up.
   def clean
 
   end
