@@ -8,7 +8,9 @@ class Datacleaner
   end
 #Change the way classes are set up.
   def clean
-
+    num_students = @data.length
+    selected_pairings = @data[0].length
+    points_allocation = 
   end
 
   def zero_index
