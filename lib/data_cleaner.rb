@@ -1,8 +1,10 @@
 class Datacleaner
 
+  attr_accessor :data
+
   # Need to change implementation so that the data can be passed in after instantiation
-  def initialize(data_array)
-    @data = data_array
+  def initialize
+    @data = nil
   end
 #Change the way classes are set up.
   def clean
