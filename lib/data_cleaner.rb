@@ -2,12 +2,12 @@ class Datacleaner
 
   attr_accessor :data
 
-  # Need to change implementation so that the data can be passed in after instantiation
+
   def initialize
     @data = nil
-    # Think about implementation
+    
   end
-#Change the way classes are set up.
+
   def clean
     num_students = @data.length
     selected_pairings = @data[0].length
