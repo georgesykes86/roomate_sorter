@@ -66,6 +66,7 @@ class Sorter
         cancelling_array.each do |array|
           student_choices[array[0]].delete(array[1])
           student_choices[array[1]].delete(array[0])
+          # Some more code here 
         end
       end
     end
