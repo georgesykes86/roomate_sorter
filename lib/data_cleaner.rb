@@ -5,6 +5,7 @@ class Datacleaner
   # Need to change implementation so that the data can be passed in after instantiation
   def initialize
     @data = nil
+    # Think about implementation
   end
 #Change the way classes are set up.
   def clean
