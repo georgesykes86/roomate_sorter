@@ -16,6 +16,7 @@ class Datacleaner
 
   def zero_index
     @data.map! { |array| array.map! { |number| number - 1 } }
+    # What shall we do here?
   end
 
 end
