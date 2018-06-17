@@ -1,11 +1,11 @@
 class Datacleaner
 
   attr_accessor :data
-
+  #Clean up that data
 
   def initialize
     @data = nil
-    
+
   end
 
   def clean
