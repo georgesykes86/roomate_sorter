@@ -4,7 +4,6 @@ class Datacleaner
 
   def initialize
     @data = nil
-
   end
 
   def clean
