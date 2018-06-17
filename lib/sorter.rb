@@ -36,7 +36,6 @@ class Sorter
       end
     end
     selections
-    # Code here too
   end
 
   def reject
