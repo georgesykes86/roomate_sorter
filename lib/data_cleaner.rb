@@ -1,7 +1,6 @@
 class Datacleaner
 
   attr_accessor :data
-  #Clean up that data
 
   def initialize
     @data = nil
@@ -15,7 +14,6 @@ class Datacleaner
 
   def zero_index
     @data.map! { |array| array.map! { |number| number - 1 } }
-    # What shall we do here?
   end
 
 end
