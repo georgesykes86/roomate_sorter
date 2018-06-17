@@ -1,4 +1,3 @@
-#Algorithm for matching children into their rooms
 require_relative '../resources/student_list'
 require_relative './data_cleaner'
 
