@@ -21,6 +21,9 @@ describe Datacleaner do
       expect(datacleaner.zero_index(non_zero_indexed_data)).to eq(zero_indexed_data)
     end
 
+    it 'does not zero index when it has already been done' do
+      expect(datacleaner.zero_index(zero_indexed_data)).to eq(zero_indexed_data)
+    end
   end
 
 end
