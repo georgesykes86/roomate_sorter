@@ -8,8 +8,8 @@ class Proposer
 
   def make_stable_proposals(data)
     while duplicate_choice?(data)
-      return false if data.any? {|choices| choices.empty?}
       handle_duplicates(data)
+      return false if unstable?(data)
     end
     eliminate_unwanted_options(data)
   end
@@ -45,6 +45,10 @@ class Proposer
       data[proposee].delete(arr[0])
       data[arr[0]].delete(proposee)
     end
+  end
+
+  def unstable?(data)
+    data.any? {|choices| choices.empty?}
   end
 
   def eliminate_unwanted_options(data)

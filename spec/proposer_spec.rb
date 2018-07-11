@@ -29,6 +29,11 @@ describe Proposer do
                  [2, 1],
                  [0, 1, 3]]
 
+  unstable_preferences = [[1,2,3],
+                          [2,0,3],
+                          [0,1,3],
+                          [0,1,2]]
+
   describe 'propose' do
 
     it 'performs the proposal correctly' do
@@ -37,6 +42,10 @@ describe Proposer do
 
     it 'performs the proposal correctly in another scenario' do
       expect(proposer.propose(preference_B)).to eq(proposals_B)
+    end
+
+    it 'fails to generate a match' do
+      expect(proposer.propose(unstable_preferences)).to be(false)
     end
 
   end
