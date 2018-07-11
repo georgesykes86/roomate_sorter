@@ -8,9 +8,10 @@ class Proposer
 
   def make_stable_proposals(data)
     while duplicate_choice?(data)
+      return false if data.any? {|choices| choices.empty?}
       handle_duplicates(data)
     end
-    data
+    eliminate_unwanted_options(data)
   end
 
   def duplicate_choice?(data)
@@ -48,7 +49,12 @@ class Proposer
 
   def eliminate_unwanted_options(data)
     preferences(data).each_with_index do |preference, index|
-
+      eliminated = data[preference][(data[preference].index(index)+1)..-1]
+      eliminated.each do |num|
+        data[preference].delete(num)
+        data[num].delete(preference)
+      end
     end
+    data
   end
 end
